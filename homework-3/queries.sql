@@ -1,7 +1,7 @@
 -- Напишите запросы, которые выводят следующую информацию:
 -- 1. Название компании заказчика (company_name из табл. customers) и ФИО сотрудника, работающего над заказом этой компании (см таблицу employees),
 -- когда и заказчик и сотрудник зарегистрированы в городе London, а доставку заказа ведет компания United Package (company_name в табл shippers)
-SELECT cu.company_name as customer, CONCAT(e.first_name, ' ', e.last_name) AS employee
+SELECT cu.company_name AS customer, CONCAT(e.first_name, ' ', e.last_name) AS employee
 FROM ORDERS o
 	LEFT JOIN shippers s
 		ON o.ship_via = s.shipper_id
@@ -28,6 +28,7 @@ AND a.category_id IN (
 	FROM categories
 	WHERE category_name IN ('Dairy Products', 'Condiments')
 )
+ORDER BY a.units_in_stock
 
 -- 3. Список компаний заказчиков (company_name из табл customers), не сделавших ни одного заказа
 SELECT a.company_name
